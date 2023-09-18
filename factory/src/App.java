@@ -1,8 +1,11 @@
+import creator.FactoryAPI;
+import enums.FactoryType;
+
 public class App {
-    public static void main(String[] args) throws Exception {
-        APIFactory apiFactory = new APIFactory();
-        System.out.println(apiFactory.createCalendarAPI("Happy Birthday", "10/5/23"));
-        System.out.println(apiFactory.createSpotifyAPI("NF - TRUST ft. Tech N9ne "));
-        System.out.println(apiFactory.createOpenAI_API("Who is the President of the United States?"));
+    public static void main(String[] args) throws Exception {   
+        FactoryAPI virtualAssitand = FactoryAPI.getFactory(FactoryType.VIRTUAL_ASSITAND);
+        System.out.println(virtualAssitand.createCalendarAPI("Meeting", "2021-10-10"));
+        System.out.println(virtualAssitand.createOpenAIAPI("What is the meaning of life?"));
+        System.out.println(virtualAssitand.createSpotifyAPI("Bohemian Rhapsody"));
     }
 }

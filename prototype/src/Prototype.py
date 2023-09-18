@@ -1,34 +1,44 @@
 import copy
 
-class Prototype:
+class Shape:
     def __init__(self):
-        self._objects = {}
+        self.type = None
 
-    def register_object(self, name, obj):
-        """Register an object"""
-        self._objects[name] = obj
-
-    def unregister_object(self, name):
-        """Unregister an object"""
-        del self._objects[name]
-
-    def clone(self, name, **attr):
-        """Clone a registered object and update its attributes"""
-        obj = copy.deepcopy(self._objects.get(name))
-        obj.__dict__.update(attr)
-        return obj
+    def clone(self):
+        return copy.copy(self)
     
-class Car:
+    def getType(self):
+        return self.type
+    
+    def draw(self):
+        print("Drawing a shape")
+        
+class Rectangle(Shape):
     def __init__(self):
-        self.name = "Skylark"
-        self.color = "Red"
-        self.options = "Ex"
+        self.type = "Rectangle"
+        
+    def draw(self):
+        print("Drawing a rectangle")
+        
+        
+class Circle(Shape):
+    def __init__(self):
+        self.type = "Circle"
+        
+    def draw(self):
+        print("Drawing a circle")
+        
+        
 
-    def __str__(self):
-        return '{} | {} | {}'.format(self.name, self.color, self.options)
-    
-c = Car()
-prototype = Prototype()
-prototype.register_object('skylark', c)
-print(c)
-print(prototype.clone('skylark'))
+original = Rectangle()
+print(original.getType())
+original.draw()
+
+clone = original.clone()
+print(clone.getType())
+clone.draw()
+
+if original is clone:
+    print("Original and clone are the same object")
+else:
+    print("Original and clone are different objects")

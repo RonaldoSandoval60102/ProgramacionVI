@@ -14,21 +14,21 @@ public class TaxHandlerTest {
     
     @Test 
     public void getTotalPrice_whenCarIsGasolineAndFromJapan_totalPriceIs12000() {
-        Car car = Car.create(1, TypeCar.GASOLINE, 2018, 10000.0, Precedence.JAPAN);
+        Car car = new Car.Builder().setId(1).setType(TypeCar.GASOLINE).setModel(2018).setPrice(10000.0).setPrecedence(Precedence.JAPAN).build();
         TaxHandler taxHandler = new TaxHandlerImpl();
         assertEquals(12000.0, taxHandler.getTotalPrice(car));
     }
 
     @Test
     public void getTotalPrice_whenCarIsElectricAndFromAmerica_totalPriceIs11000() {
-        Car car = Car.create(1, TypeCar.ELECTRIC, 2018, 10000.0, Precedence.AMERICA);
+        Car car = new Car.Builder().setId(1).setType(TypeCar.ELECTRIC).setModel(2018).setPrice(10000.0).setPrecedence(Precedence.AMERICA).build();
         TaxHandler taxHandler = new TaxHandlerImpl();
         assertEquals(5000.0, taxHandler.getTotalPrice(car));
     }
 
     @Test
     public void getTotalPrice_whenCarIsDieselAndFromEurope_totalPriceIs10500() {
-        Car car = Car.create(1, TypeCar.DIESEL, 2018, 10000.0, Precedence.EUROPE);
+        Car car = new Car.Builder().setId(1).setType(TypeCar.DIESEL).setModel(2018).setPrice(10000.0).setPrecedence(Precedence.EUROPE).build();
         TaxHandler taxHandler = new TaxHandlerImpl();
         assertEquals(7000.0, taxHandler.getTotalPrice(car));
     }

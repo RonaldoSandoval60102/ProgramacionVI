@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ClientTest {
     @Test 
     public void create_createCarWithValidValues_carCreated() {
-        Car car = Car.create(1, TypeCar.GASOLINE, 2018, 10000.0, Precedence.JAPAN);
+        Car car =  new Car.Builder().setId(1).setType(TypeCar.GASOLINE).setModel(2018).setPrice(10000.0).setPrecedence(Precedence.JAPAN).build();
         assertEquals(1, car.getId());
         assertEquals(2018, car.getModel());
         assertEquals(Precedence.JAPAN, car.getPrecedence());        assertEquals(10000.0, car.getPrice());
@@ -27,13 +27,13 @@ class ClientTest {
 
     @Test
     public void toString_createCarWithValidValues_carToString() {
-        Car car = Car.create(1, TypeCar.GASOLINE, 2018, 10000.0, Precedence.JAPAN);
+        Car car = new Car.Builder().setId(1).setType(TypeCar.GASOLINE).setModel(2018).setPrice(10000.0).setPrecedence(Precedence.JAPAN).build();
         assertEquals("Car{id=1, type=GASOLINE, model=2018, price=10000.0, precedence=JAPAN}", car.toString());
     }
 
     @Test
     public void create_createLocationKataWithValidValues_locationKataCreated(){
-        LocationKata locationKat = LocationKata.create(StatusCar.SENT, "A", "B");
+        LocationKata locationKat = new LocationKata.Builder().setStatus(StatusCar.SENT).setOrigin("A").setDestination("B").build();
         assertEquals(StatusCar.SENT, locationKat.getStatus());
         assertEquals("A", locationKat.getOrigin());
         assertEquals("B", locationKat.getDestination());
@@ -41,22 +41,22 @@ class ClientTest {
 
     @Test
     public void toString_createLocationKataWithValidValues_locationKataToString(){
-        LocationKata locationKat = LocationKata.create(StatusCar.SENT, "A", "B");
+        LocationKata locationKat = new LocationKata.Builder().setStatus(StatusCar.SENT).setOrigin("A").setDestination("B").build();
         assertEquals("LocationKata{status=SENT, origin='A', destination='B'}", locationKat.toString());
     }
 
     @Test
     public void create_createStockWithValidValues_stockCreated(){
-        Car car = Car.create(1, TypeCar.GASOLINE, 2018, 10000.0, Precedence.JAPAN);
-        Stock stock = Stock.create(car, 10);
+        Car car = new Car.Builder().setId(1).setType(TypeCar.GASOLINE).setModel(2018).setPrice(10000.0).setPrecedence(Precedence.JAPAN).build();
+        Stock stock = new Stock.Builder().setCar(car).setQuantity(10).build();
         assertEquals(car, stock.getCar());
         assertEquals(10, stock.getQuantity());
     }
 
     @Test
     public void toString_createStockWithValidValues_stockToString(){
-        Car car = Car.create(1, TypeCar.GASOLINE, 2018, 10000.0, Precedence.JAPAN);
-        Stock stock = Stock.create(car, 10);
+        Car car = new Car.Builder().setId(1).setType(TypeCar.GASOLINE).setModel(2018).setPrice(10000.0).setPrecedence(Precedence.JAPAN).build();
+        Stock stock = new Stock.Builder().setCar(car).setQuantity(10).build();
         assertEquals("Stock{car=Car{id=1, type=GASOLINE, model=2018, price=10000.0, precedence=JAPAN}, quantity=10}", stock.toString());
     }
 }

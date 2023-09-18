@@ -1,18 +1,18 @@
-## Getting Started
+## Patron de Diseño Prototype
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+El patrón de diseño Prototype es un patrón creacional que se utiliza para crear nuevos objetos a partir de un prototipo existente.
 
-## Folder Structure
+### *Que necesitamos para crear el patron de Diseño Prototype?*
 
-The workspace contains two folders by default, where:
+- Prototipo (Prototype): Es una interfaz o clase abstracta que declara el método para clonar el objeto.
+- Concreto Prototipo (Concrete Prototype): Las implementaciones de los prototipos.
+- Cliente (Client): Solicita la clonacion de los objetos
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+### *Ventajas*
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+- Costo: Clonarlos es menos costosos que crearlo asi que Optimizamos recursos
+- Flexibilidad: Permite crear nuevos objetos con pequeñas variaciones
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
 
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+### *Desventajas*
+- clonacion: La clonacion excesiva puede sobrecargar la memoria

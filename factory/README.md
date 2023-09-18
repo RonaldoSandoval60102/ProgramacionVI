@@ -1,18 +1,26 @@
-## Getting Started
+## Patron de Diseño Factory 
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Este es un patron creacional que nos permite crear objectos sin tener que especificar su clase exacta
 
-## Folder Structure
+### *Que ventajas tiene no especificar la clase de la cual queremos crear el objeto*
 
-The workspace contains two folders by default, where:
+- Desacoplamiento: Nos permitira aclopar y desaclopar mas facilmente el codigo si este cambia en el futuro (Permite agregar nuevas implementaciones mas facilmente)
+- Objecto: Simplifica la creacion de Objectos y nos permite crearlos sin tener que conocer los detalles de cómo se crea.
+- Codigo: Al utilizar una intefaz este nos permite reutilizar codigo de la creacion de objetos evitando asi el codigo duplicado.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+### *Que necesitamos para crear el patron de Diseño factory?*
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+- Product(Producto): Es la interfaz  o clase abstracta que indica que tipo de objeto se va a crear.
+- Creator(Creador): Es la clase abstracta que tiene el meodo abstracto factory el cual es el responsable de crear el objecto
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+- Concrete Creator(Creador Concreto) son los que mplementan el factory method para crear objectos
 
-## Dependency Management
+- Concrete Product (Producto Concreto): Son los objectos creados con el factory
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+### *Ventajas*
+
+- Flexibilidad: Permite cambiar el objeto que se crea sin tener que modificar todo el codigo
+- Desacoplamiento: Permite aclopar y desaclopar el codigo mas facilmente generando haci un codigo mas mantenible y escalable
+- Reusabilidad: Se reutiliza el codigo de la creacion de objetos
+
+

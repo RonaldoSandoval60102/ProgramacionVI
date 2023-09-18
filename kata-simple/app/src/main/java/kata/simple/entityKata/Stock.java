@@ -10,16 +10,31 @@ public class Stock {
         this.quantity = quantity;
     }
 
-    public static Stock create(Car car, int quantity) {
-        return new Stock(car, quantity);
-    }
-
     public Car getCar() {
         return car;
     }
 
     public int getQuantity() {
         return quantity;
+    }
+
+    public static class Builder {
+        private Car car;
+        private int quantity;
+
+        public Builder setCar(Car car) {
+            this.car = car;
+            return this;
+        }
+
+        public Builder setQuantity(int quantity) {
+            this.quantity = quantity;
+            return this;
+        }
+
+        public Stock build() {
+            return new Stock(car, quantity);
+        }
     }
 
     @Override

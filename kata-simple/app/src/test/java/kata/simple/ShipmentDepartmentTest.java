@@ -20,10 +20,10 @@ public class ShipmentDepartmentTest {
     @Test
     public void getLocation_whenLocationIsJapan_locationIsJapan() {
         List<Car> cars = new ArrayList<>();
-        cars.add(Car.create(1, TypeCar.GASOLINE, 2018, 10000.0, Precedence.JAPAN));
-        cars.add(Car.create(2, TypeCar.ELECTRIC, 2018, 10000.0, Precedence.JAPAN));
-        cars.add(Car.create(3, TypeCar.DIESEL, 2018, 10000.0, Precedence.JAPAN));
-        LocationKata locationKat = LocationKata.create(StatusCar.SENT, "A", "B");
+        cars.add(new Car.Builder().setId(1).setType(TypeCar.GASOLINE).setModel(2018).setPrice(10000.0).setPrecedence(Precedence.JAPAN).build());
+        cars.add(new Car.Builder().setId(2).setType(TypeCar.ELECTRIC).setModel(2018).setPrice(10000.0).setPrecedence(Precedence.JAPAN).build());
+        cars.add(new Car.Builder().setId(3).setType(TypeCar.DIESEL).setModel(2018).setPrice(10000.0).setPrecedence(Precedence.JAPAN).build());
+        LocationKata locationKat = new LocationKata.Builder().setStatus(StatusCar.SENT).setOrigin("A").setDestination("B").build();
         ShipmentDepartment shipmentDepartment = new ShipmentDepartmentImpl(locationKat, cars);
         assertEquals("A", shipmentDepartment.getLocation().getOrigin());
         assertEquals("B", shipmentDepartment.getLocation().getDestination());
@@ -32,10 +32,10 @@ public class ShipmentDepartmentTest {
     @Test
     public void getCars_whenCarsIsJapan_carsIsJapan() {
         List<Car> cars = new ArrayList<>();
-        cars.add(Car.create(1, TypeCar.GASOLINE, 2018, 10000.0, Precedence.JAPAN));
-        cars.add(Car.create(2, TypeCar.ELECTRIC, 2018, 10000.0, Precedence.JAPAN));
-        cars.add(Car.create(3, TypeCar.DIESEL, 2018, 10000.0, Precedence.JAPAN));
-        LocationKata locationKat = LocationKata.create(StatusCar.SENT, "A", "B");
+        cars.add(new Car.Builder().setId(1).setType(TypeCar.GASOLINE).setModel(2018).setPrice(10000.0).setPrecedence(Precedence.JAPAN).build());
+        cars.add(new Car.Builder().setId(2).setType(TypeCar.ELECTRIC).setModel(2018).setPrice(10000.0).setPrecedence(Precedence.JAPAN).build());
+        cars.add(new Car.Builder().setId(3).setType(TypeCar.DIESEL).setModel(2018).setPrice(10000.0).setPrecedence(Precedence.JAPAN).build());
+        LocationKata locationKat = new LocationKata.Builder().setStatus(StatusCar.SENT).setOrigin("A").setDestination("B").build();
         ShipmentDepartment shipmentDepartment = new ShipmentDepartmentImpl(locationKat, cars);
         assertEquals(3, shipmentDepartment.getCars().size());
     }

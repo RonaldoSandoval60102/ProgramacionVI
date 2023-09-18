@@ -19,10 +19,6 @@ public class Car {
         this.precedence = precedence;
     }
 
-    public static Car create(int id, TypeCar type, int model, double price, Precedence precedence) {
-        return new Car(id, type, model, price, precedence);
-    }
-
     public int getId() {
         return id;
     }
@@ -42,6 +38,43 @@ public class Car {
 
     public TypeCar getType() {
         return type;
+    }
+
+    public static class Builder {
+        private int id;
+        private TypeCar type;
+        private int model;
+        private double price;
+        private Precedence precedence;
+
+        public Builder setId(int id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder setType(TypeCar type) {
+            this.type = type;
+            return this;
+        }
+
+        public Builder setModel(int model) {
+            this.model = model;
+            return this;
+        }
+
+        public Builder setPrice(double price) {
+            this.price = price;
+            return this;
+        }
+
+        public Builder setPrecedence(Precedence precedence) {
+            this.precedence = precedence;
+            return this;
+        }
+
+        public Car build() {
+            return new Car(id, type, model, price, precedence);
+        }
     }
 
     @Override
